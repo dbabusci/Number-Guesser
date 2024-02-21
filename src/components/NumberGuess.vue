@@ -21,13 +21,21 @@
         gameOver.value = userNumber.value == randomNumber.value;
     }
 
-    function displayWinLoss(){
-        if(gameOver.value == true){return "You got it!";}
-        else{return "Keep guessing...";}
-    }
     function disabled() {
         if(gameOver.value == true){return true;}
         else{return false;}
+    }
+
+    function highLow() {
+        if(userNumber.value > randomNumber.value){
+            return "You number is higher than the random number...";
+        }
+        else if(userNumber.value < randomNumber.value){
+            return "Your number is lower than the random number...";
+        }
+        else{
+            return "You got it";
+        }
     }
 </script>
 
@@ -37,6 +45,6 @@
         Guess
     </button>
     <input v-model="number" type="number" value="-1">
-    <p>{{ displayWinLoss() }}</p>
     <p>Your guess count is: {{ guessCount }}</p>
+    <p>{{ highLow() }}</p>
 </template>
